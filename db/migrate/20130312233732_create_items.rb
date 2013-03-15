@@ -3,6 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.decimal :avg_rating
       t.string :name
+      t.integer :category_id
 
       t.timestamps
     end
