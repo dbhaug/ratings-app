@@ -1,0 +1,10 @@
+<% provide(:title, 'Items') %>
+<div class="span3 offset3">
+	<h1>Users</h1>
+	<h2>In order of creation</h2>
+	<% Item.all.each do |item| %>
+		<h4><%= item.id %></h4>
+		<%= item.name %><br/>
+		<%= item.avg_rating %>
+	<% end %>
+</div>

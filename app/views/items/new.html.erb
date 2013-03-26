@@ -1,0 +1,17 @@
+<% provide(:title, 'Create Item') %>
+
+<h1>Create An Item!</h1>
+<div class="row">
+	<div class="span6 offset3">
+		<%=form_for(@item) do |f| %>
+
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+
+			<%= f.label :category_id %>
+			<%= f.text_field :category_id %>
+
+			<%= f.submit "Create item", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

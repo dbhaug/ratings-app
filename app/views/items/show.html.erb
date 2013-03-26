@@ -1,0 +1,4 @@
+<% provide(:title, 'params[:id]') %>
+<div class="span3">
+	<h1><%= Item.find_by_id(params[:id]).name %><h1>
+</div>

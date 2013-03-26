@@ -1,0 +1,15 @@
+<div class="span4">
+	<% if :category_id %>
+		<% Item.all(:conditions => 
+				"category_id =#{:category_id}").each do |item| %>
+			<h2><%= item.name %></h2></br>
+			<h5><%= item.avg_rating %></h5></br>
+		<% end %>
+	<% else %>
+		<% Item.all(:conditions => 
+				"category_id =1").each do |item| %>
+			<%= item.name %>
+			<%= item.avg_rating %>
+		<% end %>
+	<% end %>
+</div>
