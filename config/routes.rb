@@ -6,6 +6,12 @@ RatingsApp::Application.routes.draw do
     resources :reviews
   end
   resources :categories
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :reviews
+
+  match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   root :to => 'users#home'
   # Sample of regular route:

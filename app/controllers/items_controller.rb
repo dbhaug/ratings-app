@@ -10,15 +10,15 @@ class ItemsController < ApplicationController
   		end
   	end
 
-  	def new
-  		@item=Item.new
-  	end
+  def new
+  	@item=Item.new
+  end
 
-  	def show
-      @item=Item.find_by_id(params[:id])
-  	end
+  def show
+    @item=Item.find_by_id(params[:id])
+  end
 
-  	def index
+  def index
 
-  	end
+  end
 end
