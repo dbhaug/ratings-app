@@ -4,7 +4,6 @@
 	<h2>In order of creation</h2>
 	<% User.all.each do |user| %>
 		<h4><%= user.id %></h4>
-		<%= user.user_name %><br/>
-		<%= user.name %>
+		<%= link_to user.user_name, user_path(user.id) %>
 	<% end %>
 </div>

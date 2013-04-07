@@ -1,4 +1,6 @@
-<% provide(:title, 'params[:id]') %>
+
+<% provide(:title, @item.name) %>
 <div class="span3">
-	<h1><%= Item.find_by_id(params[:id]).name %><h1>
+	<h1><%= @item.name %><h1>
+		<%= @item.category_id %>
 </div>

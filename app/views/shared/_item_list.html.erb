@@ -1,7 +1,6 @@
 <div class="span4">
 	<% if :category_id %>
-		<% Item.all(:conditions => 
-				"category_id =#{:category_id}").each do |item| %>
+		<% Item.find_by_category_id(:category_id).each do |item| %>
 			<h2><%= item.name %></h2></br>
 			<h5><%= item.avg_rating %></h5></br>
 		<% end %>

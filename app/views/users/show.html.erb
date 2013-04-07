@@ -1,4 +1,4 @@
-<% provide(:title, 'params[:id]') %>
+<% provide(:title, @user.name) %>
 <div class="span3">
-	<h1><%= User.find_by_id(params[:id]).name %><h1>
+	<h1><%= @user.name %><h1>
 </div>

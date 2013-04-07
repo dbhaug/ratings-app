@@ -2,7 +2,10 @@ RatingsApp::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   resources :users
-  resources :items
+  resources :items do
+    resources :reviews
+  end
+  resources :categories
 
   root :to => 'users#home'
   # Sample of regular route:
