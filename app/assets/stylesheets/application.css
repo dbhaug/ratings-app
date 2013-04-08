@@ -30,7 +30,7 @@ footer {
 		float: left;
 	}
 	ul {
-		float: right;
+		float: left;
 		list-style: none;
 		li {
 			float: left;

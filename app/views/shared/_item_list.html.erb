@@ -1,8 +1,9 @@
 <div class="span4">
-	<% if :category_id.nil? %>
-		<% Item.find_by_category_id(:category_id).each do |item| %>
+	<% if signed_in? %>
+		<% Item.find_by_category_id(:category_id).for_each do |item| %>
 			<h2><%= item.name %></h2></br>
 			<h5><%= item.avg_rating %></h5></br>
+			<%= link_to "Rate this", new_item_review_path %>
 		<% end %>
 	<% else %>
 		<% Item.find_each do |item| %>
@@ -10,7 +11,8 @@
 				<div class="span4 offset<%=1%>">
 					<%= item.name %><br/>
 					Rating:
-					<%= item.avg_rating %>
+					<%= item.avg_rating %></br>
+					<%= link_to "Rate this", new_item_review_path(item.id) %>
 				</div>
 			</div>
 		<% end %>

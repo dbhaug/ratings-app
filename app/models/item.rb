@@ -11,6 +11,10 @@ class Item < ActiveRecord::Base
   		avg_rating+=review.rating
   		count+=1
   	end
-  	avg_rating/=count
+    if count!=0
+      avg_rating/=count
+    else
+      avg_rating
+    end
   end
 end
