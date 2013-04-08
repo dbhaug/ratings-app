@@ -6,9 +6,10 @@
 		<% end %>
 	<% else %>
 		<% Item.find_each do |item| %>
-			<div class="row">
-				<div class="span4 offset<%=6%>" >
-					<%= item.name %>
+			<div class="row item">
+				<div class="span4 offset<%=1%>">
+					<%= item.name %><br/>
+					Rating:
 					<%= item.avg_rating %>
 				</div>
 			</div>
