@@ -2,7 +2,7 @@
 <% provide(:title, @item.name) %>
 <div class="span3">
 	<h1><%= @item.name %></h1>
-	<%= Category.find_by_id(@item.id).title %>
+	<%= Category.find_by_id(@item.category_id).title %>
 	<%= rating_for @item, "name" %>
 	<% @reviews.each do |review| %>
 		<div class="review">
