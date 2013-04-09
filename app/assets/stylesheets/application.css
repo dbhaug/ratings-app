@@ -11,6 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+ $grayMediumLight: #eaeaea;
+
 body {
 	padding-top: 75px;
 }
@@ -23,11 +26,11 @@ footer {
 	margin-top: 45px;
 	padding-top: 5px;
 	border-top: 1px solid $grayMediumLight;
-	color: $grayLight;
+	color: rgb(35,35,35);
 	a {
-		color: $gray;
+		color: rgb(35,35,35);
 		&:hover {
-			color: $grayDarker;
+			color: rgb(20,20,20);
 		}
 	}
 	small {
