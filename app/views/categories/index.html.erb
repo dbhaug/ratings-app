@@ -1,0 +1,10 @@
+<% provide(:title, 'Categories') %>
+<div class="span3 offset3">
+	<h1>Categories</h1>
+	<h2>In order of creation</h2>
+	<% @categories.each do |cat| %>
+		<%= cat.title %>
+		<br/>
+	<% end %>
+	<%= link_to "Create A Category!", new_category_path %>
+</div>

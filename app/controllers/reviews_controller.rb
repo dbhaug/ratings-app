@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 	def create
 		@review=Review.new(params[:review])
 		if @review.save
-			redirect_to @review
+			redirect_to Item.find_by_id(@review.item_id)
 		else
 			render 'new'
 		end

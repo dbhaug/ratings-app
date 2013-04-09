@@ -2,5 +2,13 @@
 <% provide(:title, @item.name) %>
 <div class="span3">
 	<h1><%= @item.name %></h1>
-		<%= Category.find_by_id(@item.id).title %>
+	<%= Category.find_by_id(@item.id).title %>
+	<%= rating_for @item, "name" %>
+	<% @reviews.each do |review| %>
+		<div class="review">
+			<h5><%= review.review %></h5>
+			-<%= review.user.user_name %><br/><br/>
+		</div>
+	<% end %>
+	<%= link_to "Review this", new_item_review_path(@item.id) %>
 </div>

@@ -6,12 +6,9 @@
     <%= form_for(@review) do |f| %>
 
       <%= f.label :review %>
-      <%= f.text_field :review %>
+      <%= f.text_area :review %>
 
-      <%= f.label :rating %>
-      <%= f.text_field :rating %>
-
-      <%= f.hidden_field :item_id, {:value => 1} %>
+      <%= f.hidden_field :item_id, {:value => params[:item_id]} %>
 
       <%= f.hidden_field :user_id, {:value => current_user.id} %>
 

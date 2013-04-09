@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
 	def create
   		@item = Item.new(params[:item])
+      @categories= Category.all
   		if @item.save
       		flash[:success] = "Welcome to the Ratings Site"
   			redirect_to @item
@@ -16,6 +17,7 @@ class ItemsController < ApplicationController
 
   def show
     @item=Item.find_by_id(params[:id])
+    @reviews=@item.reviews
   end
 
   def index

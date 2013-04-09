@@ -1,18 +1,17 @@
 <div class="span4">
-	<% if signed_in? %>
-		<% Item.find_by_category_id(:category_id).for_each do |item| %>
-			<h2><%= item.name %></h2></br>
-			<h5><%= item.avg_rating %></h5></br>
-			<%= link_to "Rate this", new_item_review_path %>
+	<% if 5.nil? %>
+		<% Item.find_by_category_id(:category_id).each do |item| %>
+			<h2><%=link_to item.name, item %></h2></br>
+			Rate! <%= rating_for item, "name" %>
+			<%= link_to "Review this", new_item_review_path %>
 		<% end %>
 	<% else %>
 		<% Item.find_each do |item| %>
 			<div class="row item">
-				<div class="span4 offset<%=1%>">
-					<%= item.name %><br/>
-					Rating:
-					<%= item.avg_rating %></br>
-					<%= link_to "Rate this", new_item_review_path(item.id) %>
+				<div class="span4 offset1">
+					<h2><%=link_to item.name, item %></h2><br/>
+					Rate! <%= rating_for item, "name" %>
+					<%= link_to "Review this", new_item_review_path(item.id) %>
 				</div>
 			</div>
 		<% end %>

@@ -1,12 +1,11 @@
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<%= link_to "ratings_app", '/'%>
+			<%=link_to(image_tag("star-half.png", size: "32x32", alt: "Ratings App"),
+ 				root_path, title:"Return Home", :class=>"logo") %>
 			<nav>
 				<ul class="nav pull-right">
-          			<li><%= link_to "Home", root_path %></li>
 		            <% if signed_in? %>
-		            	<li><%= link_to "Users", '#' %></li>
 		            	<li id="fat-menu" class="dropdown">
 		              		
 		            	</li>

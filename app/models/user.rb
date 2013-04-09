@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :user_name, :email, :password, :password_confirmation
   has_secure_password
+  letsrate_rater
   
   has_many :reviews, dependent: :destroy
   has_many :favorites, foreign_key: "category_id",

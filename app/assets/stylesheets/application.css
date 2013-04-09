@@ -12,7 +12,11 @@
  *= require_tree .
  */
 body {
-	padding-top: 70px;
+	padding-top: 75px;
+}
+
+header {
+	padding-bottom: 20px;
 }
 
 footer {
@@ -42,4 +46,8 @@ footer {
 .item {
 	margin-top: 65px;
 	border: 2px solid rgb(0,0,0);
+}
+
+.logo {
+	float: left;
 }

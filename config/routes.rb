@@ -1,4 +1,6 @@
 RatingsApp::Application.routes.draw do
+  match '/rate' => 'rater#create', :as => 'rate'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   resources :users
