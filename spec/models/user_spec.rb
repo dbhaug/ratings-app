@@ -2,12 +2,15 @@ require 'spec_helper'
 
 describe User do
 	before(:each) do
-		@user=User.create!(name: "Bob")
+@user=User.create!(user_name:"joe", 
+		 			email: "joe@example.com", 
+		 			password: "joejoe", 
+		 			password_confirmation: "joejoe")
 		@item=Item.create!(name: "Movie1")
 	end
 	
 	it 'should exist' do
-		User.find(@user.id).name.should=="Bob"
+		User.find(@user.id).user_name.should=="joe"
 	end
 
 	it 'should have 2 reviews' do

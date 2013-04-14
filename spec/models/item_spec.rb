@@ -3,7 +3,10 @@ require 'spec_helper'
 describe Item do 
 	before(:each) do
 		@item=Item.create!(name:"movie1")
-		@user=User.create!(name:"joe")
+		@user=User.create!(user_name:"joe", 
+		 			email: "joe@example.com", 
+		 			password: "joejoe", 
+		 			password_confirmation: "joejoe")
 	end
 
 	it "should exist" do
