@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
   end
 
   create_table "favorites", :force => true do |t|
-    t.integer  "category_id"
-    t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer "category_id"
+    t.integer "user_id"
   end
 
   create_table "items", :force => true do |t|
