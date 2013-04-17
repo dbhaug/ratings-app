@@ -8,7 +8,7 @@
 	<% else %>
 		<% Item.find_each do |item| %>
 			<div class="row item">
-				<div class="span4 offset1">
+				<div class="offset1">
 					<h2><%=link_to item.name, item %></h2><br/>
 					Rate! <%= rating_for item, "name" %>
 					<%= link_to "Review this", new_item_review_path(item.id) %>
