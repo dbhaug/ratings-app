@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
     t.string   "password_digest"
     t.string   "email"
     t.string   "remember_token"
+    t.boolean  "admin"
+    t.boolean  "experienced"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
+  skip_authorization_check :only => [:home,:new,:create]
 	def home
 
 	end

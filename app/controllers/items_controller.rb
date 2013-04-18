@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  load_and_authorize_resource
 
 	def create
   		@item = Item.new(params[:item])
