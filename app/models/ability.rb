@@ -9,6 +9,7 @@ class Ability
         can :create, Item
     else
         can :read, [Item, Review]
+        can [:read, :update], User, id: user.id
         can :home, [User]
         cannot [:create, :update, :destroy], [Item, Review, Category]
     end
