@@ -1,4 +1,4 @@
-<div class="span4">
+<div class="span2">
 	<% if 5.nil? %>
 		<% Item.find_by_category_id(:category_id).each do |item| %>
 			<h2><%=link_to item.name, item %></h2></br>
@@ -8,11 +8,9 @@
 	<% else %>
 		<% Item.find_each do |item| %>
 			<div class="row item">
-				<div class="offset1">
-					<h2><%=link_to item.name, item %></h2><br/>
-					Rate! <%= rating_for item, "name" %>
-					<%= link_to "Review this", new_item_review_path(item.id) %>
-				</div>
+				<h2><%=link_to item.name, item %></h2>
+				Rate! <%= rating_for item, "name" %>
+				<%= link_to "Review this", new_item_review_path(item.id) %>
 			</div>
 		<% end %>
 	<% end %>

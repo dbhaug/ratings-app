@@ -1,5 +1,24 @@
 <% provide(:title, 'Home Page') %>
 <div class="hero-unit">
 	<h1>Welcome</h1>
-	<%= render 'shared/item_list', category_id: 1 %>
+	
+	<% if can? :create, Item %>
+		<%= link_to "Add an Item!", new_item_path %>
+	<% else %>
+
+	<% end %>
+	<div class="tabbable"> <!-- Only required for left/right tabs -->
+	    <ul class="nav nav-tabs">
+		    <li class="active"><a href="#tab1" data-toggle="tab">Movies</a></li>
+		    <li><a href="#tab2" data-toggle="tab">Video Games</a></li>
+	    </ul>
+	    <div class="tab-content">
+		    <div class="tab-pane active" id="tab1">
+		    	<p><%= render 'shared/item_list' %></p>
+		    </div>
+		    <div class="tab-pane" id="tab2">
+		    	<p>Video Games here</p>
+		    </div>
+	    </div>
+    </div>
 </div>
