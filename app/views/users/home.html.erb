@@ -9,15 +9,15 @@
 	<% end %>
 	<div class="tabbable"> <!-- Only required for left/right tabs -->
 	    <ul class="nav nav-tabs">
-		    <li class="active"><a href="#tab1" data-toggle="tab">Movies</a></li>
-		    <li><a href="#tab2" data-toggle="tab">Video Games</a></li>
+		    <li class="active"><a href="#tab1" data-toggle="tab">Video Games</a></li>
+		    <li><a href="#tab2" data-toggle="tab">Movies</a></li>
 	    </ul>
 	    <div class="tab-content">
 		    <div class="tab-pane active" id="tab1">
-		    	<p><%= render 'shared/item_list' %></p>
+		    	<p><%= render 'shared/item_list', :cat_id => 1 %></p>
 		    </div>
 		    <div class="tab-pane" id="tab2">
-		    	<p>Video Games here</p>
+		    	<p><%= render 'shared/item_list', :cat_id => 2 %></p>
 		    </div>
 	    </div>
     </div>
