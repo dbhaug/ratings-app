@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   skip_authorization_check :only => [:home,:new,:create]
 	def home
-
+    @categories= Category.all
 	end
 
 	def new

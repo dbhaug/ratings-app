@@ -2,8 +2,8 @@
 <div class="span3 offset3">
 	<h1>Categories</h1>
 	<h2>In order of creation</h2>
-	<% @categories.each do |cat| %>
-		<%= cat.title %>
+	<% @categories.each do |category| %>
+		<h4><%= link_to category.title, category_path(category.id)  %></h4>
 		<br/>
 	<% end %>
 	<%= link_to "Create A Category!", new_category_path %>
