@@ -3,3 +3,10 @@
 	<h1><%= @user.name %></h1>
 	<%= link_to 'Edit your Profile', edit_user_path(@user) %>
 </div>
+<div class="span3">
+	<h3>Pick Your Favorite Categories!</h3>
+		<% @categories.each do |category| %>
+			<%= check_box_tag category.id,1, hasInFavorites(category)%> <%= category.title %><br/>
+		<% end %>
+		<%= link_to "Update", '/updateFavorites' %>
+</div>

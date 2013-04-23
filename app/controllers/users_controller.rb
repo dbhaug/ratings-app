@@ -26,7 +26,13 @@ class UsersController < ApplicationController
 
   def show
   		@user=User.find_by_id(params[:id])
-      @favorites=@user.favorites
+      @favorites=@user.categories
+      @categories=Category.all
+  end
+
+  def updateFavorites
+      current_user.favorites.delete
+      redirect_to current_user
   end
 
   def index
