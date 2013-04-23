@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
     t.integer "user_id"
   end
 
+  add_index "favorites", ["category_id"], :name => "index_favorites_on_category_id"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
+
   create_table "items", :force => true do |t|
     t.decimal  "avg_rating"
     t.string   "name"

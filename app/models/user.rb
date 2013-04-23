@@ -4,10 +4,9 @@ class User < ActiveRecord::Base
   letsrate_rater
   
   has_many :reviews, dependent: :destroy
-  has_many :favorites, foreign_key: "category_id",
-                        class_name: "Category",
-                        dependent: :destroy
+  has_many :favorites
   has_many :categories, through: :favorites
+
 
   before_save { email.downcase! }
   before_save :create_remember_token

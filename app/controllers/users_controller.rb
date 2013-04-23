@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   skip_authorization_check :only => [:home,:new,:create]
 	def home
-    @categories= Category.all
+    if signed_in?
+      @categories=current_user.categories
+    else
+      @categories=Category.limit(5)
+    end
 	end
 
 	def new
