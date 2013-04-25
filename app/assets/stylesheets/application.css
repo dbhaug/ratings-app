@@ -54,3 +54,8 @@ footer {
 .logo {
 	float: left;
 }
+
+div.favoriteForm {
+	float: right;
+	padding-right: 30px;
+}

@@ -7,10 +7,12 @@ class Ability
         can :manage, :all
     elsif user.experienced
         can :create, Item
+        baseUser(user)
+    elsif User.where(id: user.id).exists?
+        baseUser(user)
     else
-        can :read, [Item, Review]
-        can [:read, :update], User, id: user.id
-        can :home, [User]
+        notSignedIn()
+        can :read, :all
         cannot [:create, :update, :destroy], [Item, Review, Category]
     end
 
@@ -40,5 +42,22 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+  end
+
+  private
+
+  def baseUser(user)
+    can :read, [Item, Review]
+    can [:read, :update], User, id: user.id
+    can :home, [User]
+    can :read, :all
+    can :updateFavorites, User
+    cannot :manage, [Category]
+  end
+  def notSignedIn
+    can :create, :session
+    can :read, :all
+    can :home, [User]
+    can [:new,:create], User
   end
 end

@@ -1,4 +1,4 @@
-<% if :cat_id? %>
+<% if cat_id %>
 	<% Item.where(category_id: cat_id).each do |item| %>
 		<div class="span3 item">
 			<h2><%=link_to item.name, item %></h2>
@@ -7,7 +7,7 @@
 		</div>
 	<% end %>
 <% else %>
-	<% Item.find_each do |item| %>
+	<% Item.all.each do |item| %>
 		<div class="span3 item">
 			<h2><%=link_to item.name, item %></h2>
 			Rate! <%= rating_for item, "name" %>

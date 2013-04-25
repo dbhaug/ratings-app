@@ -4,7 +4,9 @@ class UsersController < ApplicationController
 	def home
     if signed_in?
       @categories=current_user.categories
-      @categories||=Category.limit(5)
+      if @categories.first.nil?
+        @categories=Category.limit(5)
+      end
     else
       @categories=Category.limit(5)
     end
