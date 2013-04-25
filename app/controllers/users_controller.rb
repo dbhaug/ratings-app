@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	def home
     if signed_in?
       @categories=current_user.categories
+      @categories||=Category.limit(5)
     else
       @categories=Category.limit(5)
     end
@@ -19,20 +20,29 @@ class UsersController < ApplicationController
       sign_in @user
       flash[:success] = "Welcome to the Ratings Site"
   		redirect_to @user
-  	else
+    else
   		render 'new'
   	end
   end
 
   def show
-  		@user=User.find_by_id(params[:id])
-      @favorites=@user.categories
-      @categories=Category.all
+  	@user=User.find_by_id(params[:id])
+    @favorites=@user.categories
+    @categories=Category.all
   end
 
   def updateFavorites
-      current_user.favorites.delete
-      redirect_to current_user
+    User.find(current_user.id).favorites.each do |favorite|
+      favorite.destroy()
+    end
+    params[:category].each do |category|
+      if Favorite.where(category_id: category,
+       user_id: current_user.id).exists?
+      else
+        Favorite.create!(user_id:current_user.id, category_id: category )
+      end
+    end
+    redirect_to current_user
   end
 
   def index

@@ -5,8 +5,11 @@
 </div>
 <div class="span3">
 	<h3>Pick Your Favorite Categories!</h3>
+	<%= form_tag('/updateFavorites', method: :put) do %>
 		<% @categories.each do |category| %>
-			<%= check_box_tag category.id,1, hasInFavorites(category)%> <%= category.title %><br/>
+			<%= check_box_tag('category[]', category.id , hasInFavorites(category)) %> <%= category.title %><br/>
 		<% end %>
-		<%= link_to "Update", '/updateFavorites' %>
+		<br/>
+		<%= submit_tag "Update Favorites", class: "btn btn-large btn-primary" %>
+	<% end %>
 </div>
