@@ -15,6 +15,7 @@ RatingsApp::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/updateFavorites', to: 'users#updateFavorites'
+  match '/flagged', to: 'reviews#showFlagged'
 
   root :to => 'users#home'
   # Sample of regular route:

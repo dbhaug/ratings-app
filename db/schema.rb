@@ -69,20 +69,21 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
     t.integer  "item_id"
     t.decimal  "rating"
     t.string   "review"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "flag",       :default => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "user_name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.string   "email"
     t.string   "remember_token"
-    t.boolean  "admin"
-    t.boolean  "experienced"
+    t.boolean  "admin",           :default => false
+    t.boolean  "experienced",     :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

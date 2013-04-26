@@ -1,0 +1,8 @@
+<% provide(:title, "Reviews Flagged for Moderation") %>
+<div class="span3">
+	<h1>Reviews Flagged for Moderation</h1>
+	<% @reviews.each do |review| %>
+		<div class="review<%=review.id%>">
+			<%=review.review%><br/>
+	<% end %>	
+</div>

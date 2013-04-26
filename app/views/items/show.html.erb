@@ -4,8 +4,9 @@
 	<%= Category.find_by_id(@item.category_id).title %>
 	<%= rating_for @item, "name" %>
 	<% @reviews.each do |review| %>
-		<div class="review">
-			<h5><%= review.review %></h5>
+		<div class="review review<%=review.id%>">
+			<h5><%= review.review %></h5><%= link_to 'Flag',review,
+			method: :put, remote: true, format: :js, data: {confirm: "Flag this comment for review by an Administrator?"} %><br/>
 			-<%= review.user.user_name %><br/><br/>
 		</div>
 	<% end %>
