@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
   rescue_from CanCan::AccessDenied do |exception|
-    render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
+  	if !(User.where(id: current_user.id).nil?)
+  		render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
+  	else	
+    	redirect_to signin_path
+    end
   end
 
   def handle_unverified_request

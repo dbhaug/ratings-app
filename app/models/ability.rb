@@ -7,13 +7,11 @@ class Ability
         can :manage, :all
     elsif user.experienced
         can :create, Item
-        baseUser(user)
+        baseUser user
     elsif User.where(id: user.id).exists?
-        baseUser(user)
+        baseUser user
     else
-        notSignedIn()
-        can :read, :all
-        cannot [:create, :update, :destroy], [Item, Review, Category]
+        notSignedIn
     end
 
     # Define abilities for the passed in user here. For example:
@@ -47,17 +45,16 @@ class Ability
   private
 
   def baseUser(user)
-    can :read, [Item, Review]
-    can [:read, :update], User, id: user.id
     can :home, [User]
     can :read, :all
-    can :updateFavorites, User
-    cannot :manage, [Category]
+    cannot :read, User
+    can [:read, :update], User, id: user.id
+    can :updateFavorites, User, id: user.id
   end
   def notSignedIn
     can :create, :session
     can :read, :all
-    can :home, [User]
+    can :home, User
     can [:new,:create], User
   end
 end

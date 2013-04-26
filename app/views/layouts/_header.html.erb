@@ -5,18 +5,27 @@
  				root_path, title:"Return Home", :class=>"logo") %>
 			<nav>
 				<ul class="nav pull-right">
-		            <% if signed_in? %>
+		            <li><%= link_to "Browse!", items_path %></li>
+		          	<li><%= link_to "Browse By Category!", categories_path %></li>
+		          	<% if signed_in? %>
 		            	<li id="fat-menu" class="dropdown">
 		              		
 		            	</li>
+		            	<% if current_user.admin? %>
+		                	<li><%= link_to "New Item", new_item_path %></li>
+		                	<li><%= link_to "New Category", new_category_path %></li>
+		                <% end %>
+
 		            	<li><%= link_to "Profile", current_user %></li>
 		                <li class="divider"></li>
 		                <li>
 		                	<%= link_to "Sign out", signout_path, method: "delete" %>
 		                </li>
+
 		          	<% else %>
 		            	<li><%= link_to "Sign in", signin_path %></li>
 		          	<% end %>
+
 		        </ul>
 			</nav>
 		</div>

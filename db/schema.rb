@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
+    t.boolean  "flag"
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"

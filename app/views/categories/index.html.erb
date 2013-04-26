@@ -6,5 +6,7 @@
 		<h4><%= link_to category.title, category_path(category.id)  %></h4>
 		<br/>
 	<% end %>
-	<%= link_to "Create A Category!", new_category_path %>
+	<% if can? :create, Category %>
+		<%= link_to "Create A Category!", new_category_path %>
+	<% end %>
 </div>

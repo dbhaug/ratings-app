@@ -2,11 +2,7 @@
 <div class="hero-unit">
 	<h1>Welcome</h1>
 	
-	<% if can? :create, Item %>
-		<%= link_to "Add an Item!", new_item_path %>
-	<% else %>
-
-	<% end %>
+	<%= render 'shared/new_item_link' %>
 	<div class="tabbable"> <!-- Only required for left/right tabs -->
 	    <ul class="nav nav-tabs">
 		    <li class="active"><a href="#tab1" data-toggle="tab">
@@ -17,7 +13,7 @@
 	    </ul>
 	    <div class="tab-content">
 		    <div class="tab-pane active" id="tab1">
-		    	<%= render 'shared/item_list', :cat_id => 1 %>
+		    	<%= render 'shared/item_list', :cat_id => @categories.first.id %>
 		    </div>
 		    <% @categories.slice(1..@categories.size).each do |category|%>
 		    	<div class="tab-pane" id="tab<%=category.id%>">

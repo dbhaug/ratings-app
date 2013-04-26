@@ -3,4 +3,5 @@ class Category < ActiveRecord::Base
   has_many :items
   has_many :favorites
   has_many :users, through: :favorites
+  include SessionsHelper
 end
