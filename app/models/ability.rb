@@ -50,7 +50,9 @@ class Ability
     cannot :read, User
     can [:read, :update], User, id: user.id
     can :updateFavorites, User, id: user.id
+    can :update, Review
   end
+  
   def notSignedIn
     can :create, :session
     can :read, :all
