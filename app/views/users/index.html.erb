@@ -1,9 +1,12 @@
 <% provide(:title, 'Users') %>
-<div class="span3 offset3">
+<div class="span6 offset2">
 	<h1>Users</h1>
 	<h2>In order of creation</h2>
 	<% User.all.each do |user| %>
-		<h4><%= user.id %></h4>
-		<%= link_to user.user_name, user_path(user.id) %>
+		<div class="user<%=user.id%>">
+			<h5><%= user.id %>.</h5>
+			<h4><%= link_to user.user_name, user_path(user.id) %></h4>
+			<%= link_to "Delete", user, method: :delete, :remote=> true, :format => :js, data: {confirm: 'Are you sure?'} %>
+		</div>
 	<% end %>
 </div>

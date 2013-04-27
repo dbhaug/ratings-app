@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   skip_authorization_check :only => [:home,:new,:create]
+  respond_to :html, :js
 	def home
     if signed_in?
       @categories=current_user.categories
@@ -63,6 +64,15 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'edit'
+    end
+  end
+
+  def destroy
+    @user=User.find(params[:id])
+    @user.destroy
+    respond_with(@customer) do |format|
+      format.html {redirect_to users_path}
+      format.js
     end
   end
 end

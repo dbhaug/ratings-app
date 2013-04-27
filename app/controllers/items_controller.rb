@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 
   def show
     @item=Item.find_by_id(params[:id])
-    @reviews=@item.reviews
+    @reviews=Review.where(item_id: @item.id,flag: false)
   end
 
   def index

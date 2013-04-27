@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
   rescue_from CanCan::AccessDenied do |exception|
-  	if !(User.where(id: current_user.id).nil?)
+  	if (signed_in?)
   		render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
   	else	
     	redirect_to signin_path

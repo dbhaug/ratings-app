@@ -4,6 +4,8 @@
 	<% @reviews.each do |review| %>
 		<div class="review<%=review.id%>">
 			<%=review.review%><br/>
+			<%= link_to "Unflag", review,
+			method: :put, remote: true, format: :js, data: {confirm: "Unflag this comment?"} %><br/><br/>
 		</div>
 	<% end %>	
 </div>

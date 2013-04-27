@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
 
 	def update
 		@review=Review.find(params[:id])
-		@review.flag=true
+		@review.toggle!(:flag)
 		if @review.save
 			respond_with(@review) do |format|
 				format.html {redirect_to root_url}
