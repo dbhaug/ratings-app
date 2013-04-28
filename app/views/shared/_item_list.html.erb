@@ -1,15 +1,22 @@
 <% if cat_id %>
-	<% Item.where(category_id: cat_id).each do |item| %>
+	<% items=Item.where(category_id: cat_id) %>
+	<% sortedItems=items.sort_by {|i| -(i.average("name")).avg} %>
+	<% sortedItems.each do |item| %>
 		<div class="span3 item">
 			<h2><%=link_to item.name, item %></h2>
 			Rate! <%= rating_for item, "name" %>
+			<% dimension="name"%>
+			<%= (item.average "#{dimension}").avg %>
 			<%= link_to "Review this", new_item_review_path(item.id) %>
 		</div>
 	<% end %>
 <% else %>
-	<% Item.all.each do |item| %>
+	<% items= Item.all.each %>
+	<% sortedItems=items.sort_by {|i| -(i.average("name")).avg} %>
+	<% sortedItems.each do |item| %>
 		<div class="span3 item">
 			<h2><%=link_to item.name, item %></h2>
+			<%= link_to item.category.title, item.category %><br/>
 			Rate! <%= rating_for item, "name" %>
 			<%= link_to "Review this", new_item_review_path(item.id) %>
 		</div>
