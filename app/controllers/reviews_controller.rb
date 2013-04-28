@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+	include ReviewsHelper
 	respond_to :html, :js
 	def new
 		@review = Review.new
@@ -7,6 +8,7 @@ class ReviewsController < ApplicationController
 	def create
 		@review=Review.new(params[:review])
 		if @review.save
+			evalExperience(@review)
 			redirect_to Item.find_by_id(@review.item_id)
 		else
 			render 'new'
@@ -26,6 +28,7 @@ class ReviewsController < ApplicationController
 		@review=Review.find(params[:id])
 		@review.toggle!(:flag)
 		if @review.save
+			evalExperience(@review)
 			respond_with(@review) do |format|
 				format.html {redirect_to root_url}
 				format.js
