@@ -1,21 +1,9 @@
-****..*...............
+..*...............
 
 Pending:
-  CategoryHelper add some examples to (or delete) C:/Sites/rails_projects/ratings-app/spec/helpers/category_helper_spec.rb
+  Favorite add some examples to (or delete) C:/Sites/rails_projects/ratings-app/spec/models/favorite_spec.rb
     # No reason given
-    # ./spec/helpers/category_helper_spec.rb:14
-  ItemsHelper add some examples to (or delete) C:/Sites/rails_projects/ratings-app/spec/helpers/items_helper_spec.rb
-    # No reason given
-    # ./spec/helpers/items_helper_spec.rb:14
-  ReviewsHelper add some examples to (or delete) C:/Sites/rails_projects/ratings-app/spec/helpers/reviews_helper_spec.rb
-    # No reason given
-    # ./spec/helpers/reviews_helper_spec.rb:14
-  SessionsHelper add some examples to (or delete) C:/Sites/rails_projects/ratings-app/spec/helpers/sessions_helper_spec.rb
-    # No reason given
-    # ./spec/helpers/sessions_helper_spec.rb:14
-  Favorites add some examples to (or delete) C:/Sites/rails_projects/ratings-app/spec/models/favorites_spec.rb
-    # No reason given
-    # ./spec/models/favorites_spec.rb:4
+    # ./spec/models/favorite_spec.rb:4
 
-Finished in 5.15 seconds
-22 examples, 0 failures, 5 pending
+Finished in 5.56 seconds
+18 examples, 0 failures, 1 pending

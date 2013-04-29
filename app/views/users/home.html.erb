@@ -5,19 +5,13 @@
 	<%= render 'shared/new_item_link' %>
 	<div class="tabbable"> <!-- Only required for left/right tabs -->
 	    <ul class="nav nav-tabs">
-		    <li class="active"><a href="#tab1" data-toggle="tab">
-		    	<%= @categories.first.title%></a></li>
-		    <% @categories.slice(1..@categories.size).each do |category|%>
-		    	<li><a href='#tab<%=category.id%>' data-toggle="tab"><%= category.title %></a></li>
+		    <% @categories.each_with_index do |category, index|%>
+		    	<li class="<%="active" unless index>0 %>"><a href='#tab<%=category.id%>' data-toggle="tab"><%= category.title %></a></li>
 		    <% end %>
 	    </ul>
 	    <div class="tab-content">
-		    <div class="tab-pane active" id="tab1">
-		    	<%= link_to @categories.first.title+" page", @categories.first %><br/>
-		    	<%= render 'shared/item_list', :cat_id => @categories.first.id %>
-		    </div>
-		    <% @categories.slice(1..@categories.size).each do |category|%>
-		    	<div class="tab-pane" id="tab<%=category.id%>">
+		    <% @categories.each_with_index do |category, index|%>
+		    	<div class="tab-pane <%="active" unless index>0 %>" id="tab<%=category.id%>">
 		    		<%= link_to category.title+" page", category %><br/>
 		    		<%= render 'shared/item_list', cat_id: category.id%>
 		    	</div>
