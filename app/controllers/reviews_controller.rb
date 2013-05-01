@@ -39,4 +39,13 @@ class ReviewsController < ApplicationController
 	def showFlagged
 		@reviews=Review.where(flag: true)
 	end
+
+	def destroy
+    @review=Review.find(params[:id])
+    @review.destroy
+    respond_to do |format|
+      format.html {redirect_to flagged_path}
+      format.js
+    end
+  end
 end

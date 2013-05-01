@@ -1,24 +1,19 @@
 <% if cat_id %>
 	<% items=Item.where(category_id: cat_id) %>
-	<% sortedItems=items.sort_by {|i| -(i.average("name")).avg} %>
-	<% sortedItems.each do |item| %>
-		<div class="span3 item">
-			<h2><%=link_to item.name, item %></h2>
-			Rate! <%= rating_for item, "name" %>
-			<% dimension="name"%>
-			<%= (item.average "#{dimension}").avg %>
-			<%= link_to "Review this", new_item_review_path(item.id) %>
-		</div>
-	<% end %>
 <% else %>
-	<% items= Item.all.each %>
+	<% items=Item.all %>
+<% end %>
+<% if !items.first.average("name").nil? %>
 	<% sortedItems=items.sort_by {|i| -(i.average("name")).avg} %>
-	<% sortedItems.each do |item| %>
-		<div class="span3 item">
-			<h2><%=link_to item.name, item %></h2>
-			<%= link_to item.category.title, item.category %><br/>
-			Rate! <%= rating_for item, "name" %>
-			<%= link_to "Review this", new_item_review_path(item.id) %>
-		</div>
-	<% end %>
+<% else %>
+	<% sortedItems=items %>
+<% end %>
+<% sortedItems.each do |item| %>
+	<div class="span3 item item<%=item.id%>">
+		<h2><%=link_to item.name, item %></h2><%= link_to("Delete", item, method: :delete, :remote=> true, :format => :js, data: {confirm: 'Are you sure?'}) unless cannot? :destroy, Item %><br/>
+		<%= link_to item.category.title, item.category %><br/>
+		Rate! <%= link_to item.votes, item, method: :vote, :remote => true, :format => :js%>
+		<%= rating_for item, "name", options: :disable_after_rate %>
+		<%= link_to "Review this", new_item_review_path(item.id) %>
+	</div>
 <% end %>

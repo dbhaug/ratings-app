@@ -5,7 +5,9 @@
 		<div class="review<%=review.id%>">
 			<%=review.review%><br/>
 			<%= link_to "Unflag", review,
-			method: :put, remote: true, format: :js, data: {confirm: "Unflag this comment?"} %><br/><br/>
+			method: :put, remote: true, format: :js, data: {confirm: "Unflag this comment?"} %>
+			<%= link_to "Delete", review,
+			method: :delete, remote: true, format: :js, data: {confirm: "Delete this comment?"} %><br/><br/>
 		</div>
 	<% end %>	
 </div>

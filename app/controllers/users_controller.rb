@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   def destroy
     @user=User.find(params[:id])
     @user.destroy
-    respond_with(@customer) do |format|
+    respond_to do |format|
       format.html {redirect_to users_path}
       format.js
     end

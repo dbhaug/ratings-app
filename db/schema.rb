@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
   end
 
   create_table "favorites", :force => true do |t|
-    t.integer "category_id"
-    t.integer "user_id"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "favorites", ["category_id", "user_id"], :name => "index_favorites_on_category_id_and_user_id", :unique => true
@@ -31,10 +33,11 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
   create_table "items", :force => true do |t|
     t.decimal  "avg_rating"
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "category_id"
     t.boolean  "flag"
+    t.integer  "votes",       :default => 1
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
