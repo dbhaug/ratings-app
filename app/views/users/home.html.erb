@@ -13,7 +13,7 @@
 		    <% @categories.each_with_index do |category, index|%>
 		    	<div class="tab-pane <%="active" unless index>0 %>" id="tab<%=category.id%>">
 		    		<%= link_to category.title+" page", category %><br/>
-		    		<%= render 'shared/item_list', cat_id: category.id%>
+		    		<%= render('shared/item_list', cat_id: category.id) unless category.items.empty?%>
 		    	</div>
 		    <% end %>
 	    </div>

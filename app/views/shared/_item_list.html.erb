@@ -1,14 +1,13 @@
-<% if cat_id %>
-	<% items=Item.where(category_id: cat_id) %>
-<% else %>
-	<% items=Item.all %>
+<% items=Item.all %>
+<% items=Item.where(category_id: cat_id) unless cat_id.nil? %>
+<% sortedItems=items %>
+<% if noUnratedItems(items) %>
+	<% sortedItems=items.sort_by {|i| -(i.average("name")).avg()}%>
 <% end %>
-<% if !items.first.average("name").nil? %>
-	<% sortedItems=items.sort_by {|i| -(i.average("name")).avg} %>
-<% else %>
-	<% sortedItems=items %>
-<% end %>
-<% sortedItems.each do |item| %>
+<% sortedItems.each_with_index do |item, index| %>
+	<% if index>11&&cat_id%>
+		<% break %>
+	<% end %>
 	<div class="span3 item item<%=item.id%>">
 		<h2><%=link_to item.name, item %></h2><%= link_to("Delete", item, method: :delete, :remote=> true, :format => :js, data: {confirm: 'Are you sure?'}) unless cannot? :destroy, Item %><br/>
 		<%= link_to item.category.title, item.category %><br/>

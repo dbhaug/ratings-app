@@ -1,14 +1,16 @@
 <% provide(:title, @item.name) %>
-<div class="span3">
+<div class="offset1">
 	<h1><%= @item.name %></h1>
 	<%= Category.find_by_id(@item.category_id).title %>
 	<%= rating_for @item, "name" %>
 	<% @reviews.each do |review| %>
-		<div class="review review<%=review.id%>">
+		<div class="review review<%=review.id%> span2">
 			<h5><%= review.review %></h5><%= link_to 'Flag',review,
 			method: :put, remote: true, format: :js, data: {confirm: "Flag this comment for review by an Administrator?"} %><br/>
 			-<%= review.user.user_name %><br/><br/>
 		</div>
 	<% end %>
-	<%= link_to "Review this", new_item_review_path(@item.id) %>
+	<div class="span2">
+		<%= link_to "Review this", new_item_review_path(@item.id) %>
+	</div>
 </div>
