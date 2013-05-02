@@ -9,7 +9,7 @@
 		<% break %>
 	<% end %>
 	<div class="span3 item item<%=item.id%>">
-		<h2><%=link_to item.name, item %></h2>
+		<h3><%=link_to item.name, item %></h3>
 		<%= link_to item.category.title, item.category %> <%= link_to("| Delete", item, method: :delete, :remote=> true, :format => :js, data: {confirm: 'Are you sure?'}) unless cannot? :destroy, Item %><br/>
 		Rate!
 		<%= rating_for item, "name", options: :disable_after_rate %>

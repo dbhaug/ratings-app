@@ -53,11 +53,14 @@ class Ability
     can :update, Review
     cannot :index, User
     cannot :showFlagged, Review
+    can [:new, :create], Review
   end
   
   def notSignedIn
     can :create, :session
     can :home, User
+    can :read, Item
+    can :read, Category
     can [:new,:create], User
     cannot :index, User
     cannot :showFlagged, Review
