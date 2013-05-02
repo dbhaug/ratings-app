@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :user_name, :email, :password, :password_confirmation
-  attr_accessor :experienced
   has_secure_password
   letsrate_rater
   
