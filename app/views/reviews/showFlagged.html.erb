@@ -3,9 +3,12 @@
 	<h1>Reviews Flagged for Moderation</h1>
 	<% @reviews.each do |review| %>
 		<div class="review<%=review.id%>">
-			<%=review.review%><br/>
+			Content: <%=review.review%><br/>
+			User: <%=review.user.user_name%><br/>
+			Item: <%=review.item.name%><br/>
+			Category: <%=review.item.category.title%><br/>
 			<%= link_to "Unflag", review,
-			method: :put, remote: true, format: :js, data: {confirm: "Unflag this comment?"} %>
+			method: :put, remote: true, format: :js, data: {confirm: "Unflag this comment?"} %> | 
 			<%= link_to "Delete", review,
 			method: :delete, remote: true, format: :js, data: {confirm: "Delete this comment?"} %><br/><br/>
 		</div>
