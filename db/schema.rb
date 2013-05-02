@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20130409000954068) do
     t.boolean  "flag",       :default => false
   end
 
+  add_index "reviews", ["item_id", "user_id"], :name => "index_reviews_on_item_id_and_user_id", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "user_name"

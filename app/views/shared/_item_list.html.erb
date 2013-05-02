@@ -9,10 +9,12 @@
 		<% break %>
 	<% end %>
 	<div class="span3 item item<%=item.id%>">
-		<h2><%=link_to item.name, item %></h2><%= link_to("Delete", item, method: :delete, :remote=> true, :format => :js, data: {confirm: 'Are you sure?'}) unless cannot? :destroy, Item %><br/>
-		<%= link_to item.category.title, item.category %><br/>
-		Rate! <%= link_to item.votes, item, method: :vote, :remote => true, :format => :js%>
+		<h2><%=link_to item.name, item %></h2>
+		<%= link_to item.category.title, item.category %> |<%= link_to("Delete", item, method: :delete, :remote=> true, :format => :js, data: {confirm: 'Are you sure?'}) unless cannot? :destroy, Item %><br/>
+		Rate!
 		<%= rating_for item, "name", options: :disable_after_rate %>
-		<%= link_to "Review this", new_item_review_path(item.id) %>
+		<% if can? :create, Review %>
+			<%= link_to("Review this", new_item_review_path(item.id)) unless Review.where(user_id: current_user.id, item_id: item.id).exists? %>
+		<% end %>
 	</div>
 <% end %>

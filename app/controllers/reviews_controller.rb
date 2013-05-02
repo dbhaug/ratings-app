@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+	load_and_authorize_resource
 	include ReviewsHelper
 	respond_to :html, :js
 	def new
@@ -10,13 +11,10 @@ class ReviewsController < ApplicationController
 		if @review.save
 			evalExperience(@review)
 			redirect_to Item.find_by_id(@review.item_id)
+			sign_in(@review.user)
 		else
 			render 'new'
 		end
-	end
-
-	def destroy
-
 	end
 
 	def show
@@ -25,10 +23,12 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
+		user=current_user
 		@review=Review.find(params[:id])
 		@review.toggle!(:flag)
 		if @review.save
 			evalExperience(@review)
+			sign_in(user)
 			respond_with(@review) do |format|
 				format.html {redirect_to root_url}
 				format.js

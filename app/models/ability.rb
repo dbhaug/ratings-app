@@ -8,7 +8,6 @@ class Ability
     elsif user.experienced
         can :create, Item
         baseUser user
-        cannot :index, User
     elsif User.where(id: user.id).exists?
         baseUser user
     else
@@ -53,13 +52,14 @@ class Ability
     can :updateFavorites, User, id: user.id
     can :update, Review
     cannot :index, User
+    cannot :showFlagged, Review
   end
   
   def notSignedIn
     can :create, :session
-    can :read, :all
     can :home, User
     can [:new,:create], User
     cannot :index, User
+    cannot :showFlagged, Review
   end
 end
