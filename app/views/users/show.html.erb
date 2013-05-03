@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="span3">
 	<h1><%= @user.name %></h1>
-	<%= link_to 'Edit your Profile', edit_user_path(@user) %>
+	<%= link_to 'Edit your Profile', edit_user_path(current_user.id) %>
 </div>
 <div class="span3 favoriteForm">
 	<h3>Pick Your Favorite Categories!</h3>
